@@ -1,5 +1,4 @@
 #include "clock.h"
-#include "gfx.h"
 #include "home.h"
 #include "lockScreen.h"
 

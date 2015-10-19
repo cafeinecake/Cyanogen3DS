@@ -1,7 +1,5 @@
 #include "appDrawer.h"
 #include "clock.h"
-#include "drawing.h"
-#include "gfx.h"
 #include "home.h"
 #include "lockScreen.h"
 #include "main.h"
@@ -44,7 +42,7 @@ int batteryStatus(int x, int y)
 
 void appDrawerIcon() //Draws the app drawer icon. Draws a different icon of the same size once hovered with the cursor.
 {
-	if (touch.px  >= 170 && touch.px  <= 210 && touch.py >= 130 && touch.py <= 180)
+	if (touch.px  >= 170 && touch.px  <= 210 && touch.py >= 135 && touch.py <= 180)
 		sf2d_draw_texture(ic_allapps_pressed, 179, 148);
 	
 	else

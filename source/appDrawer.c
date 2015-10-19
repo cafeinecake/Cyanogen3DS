@@ -1,7 +1,5 @@
 #include "appDrawer.h"
 #include "clock.h"
-#include "drawing.h"
-#include "gfx.h"
 #include "home.h"
 #include "lockScreen.h"
 #include "powerMenu.h"

@@ -1,5 +1,4 @@
 #include "clock.h"
-#include "drawing.h"
 #include "home.h"
 
 void digitalTime(int x, int y)

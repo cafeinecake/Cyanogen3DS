@@ -1,5 +1,4 @@
 #include "main.h"
-#include "gfx.h"
 #include "home.h"
 
 int main(int argc, char **argv)
