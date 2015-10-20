@@ -3,6 +3,7 @@
 #include "home.h"
 #include "lockScreen.h"
 #include "powerMenu.h"
+#include "settingsMenu.h"
 
 void appDrawerUnload()
 {
@@ -13,14 +14,14 @@ void appDrawerUnload()
 }
 
 int appDrawer()
-{
-	sf2d_set_clear_color(RGBA8(0, 0, 0, 0));
-	
+{	
 	ic_launcher_clock = sf2d_create_texture_mem_RGBA8(ic_launcher_clock_img.pixel_data, ic_launcher_clock_img.width, ic_launcher_clock_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	ic_launcher_filemanager = sf2d_create_texture_mem_RGBA8(ic_launcher_filemanager_img.pixel_data, ic_launcher_filemanager_img.width, ic_launcher_filemanager_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	ic_launcher_gallery = sf2d_create_texture_mem_RGBA8(ic_launcher_gallery_img.pixel_data, ic_launcher_gallery_img.width, ic_launcher_gallery_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	ic_launcher_game = sf2d_create_texture_mem_RGBA8(ic_launcher_game_img.pixel_data, ic_launcher_game_img.width, ic_launcher_game_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 
+	sf2d_set_clear_color(RGBA8(0, 0, 0, 0));
+	
 	while (aptMainLoop())
 	{	
 		hidScanInput();
@@ -33,35 +34,43 @@ int appDrawer()
 		sf2d_draw_texture(backdrop, 0, 14);
 
 		sf2d_draw_texture(ic_launcher_browser, 20, 35);
-		sftd_draw_textf(roboto,18, 90, RGBA8(0, 0, 0, 255), 12, "Browser");
+		sftd_draw_textf(roboto, 18, 90, RGBA8(0, 0, 0, 255), 12, "Browser");
 		sf2d_draw_texture(ic_launcher_clock, 95, 35);
-		sftd_draw_textf(roboto,98, 90, RGBA8(0, 0, 0, 255), 12, "Clock");
+		sftd_draw_textf(roboto, 98, 90, RGBA8(0, 0, 0, 255), 12, "Clock");
 		sf2d_draw_texture(ic_launcher_filemanager, 170, 35);
-		sftd_draw_textf(roboto,167, 90, RGBA8(0, 0, 0, 255), 12, "Manager");
+		sftd_draw_textf(roboto, 167, 90, RGBA8(0, 0, 0, 255), 12, "Manager");
 		sf2d_draw_texture(ic_launcher_gallery, 245, 35);
-		sftd_draw_textf(roboto,247, 90, RGBA8(0, 0, 0, 255), 12, "Gallery");
+		sftd_draw_textf(roboto, 247, 90, RGBA8(0, 0, 0, 255), 12, "Gallery");
 		sf2d_draw_texture(ic_launcher_game, 320, 35);
-		sftd_draw_textf(roboto,325, 90, RGBA8(0, 0, 0, 255), 12, "Game");
+		sftd_draw_textf(roboto, 325, 90, RGBA8(0, 0, 0, 255), 12, "Game");
 		sf2d_draw_texture(ic_launcher_messenger, 20, 115);
-		sftd_draw_textf(roboto,16, 170, RGBA8(0, 0, 0, 255), 12, "Messages");
+		sftd_draw_textf(roboto, 16, 170, RGBA8(0, 0, 0, 255), 12, "Messages");
 		sf2d_draw_texture(ic_launcher_apollo, 95, 115);
-		sftd_draw_textf(roboto,98, 170, RGBA8(0, 0, 0, 255), 12, "Music");
+		sftd_draw_textf(roboto, 98, 170, RGBA8(0, 0, 0, 255), 12, "Music");
 		sf2d_draw_texture(ic_launcher_settings, 170, 115);
 		sftd_draw_textf(roboto, 167, 170, RGBA8(0, 0, 0, 255), 12, "Settings");
 		
-		navbarControls();
+		navbarControls(0);
 		digitalTime(350, 2); 
 		batteryStatus(316, 2); 
 		cursorController();
 		
 		sf2d_end_frame();
 		
+		if ((touch.px  >= 170 && touch.px  <= 215 && touch.py >= 115 && touch.py <= 160) && (kDown & KEY_A))
+		{
+			appDrawerUnload();
+			settingsMenu();
+		}
+		
+		//Navbar controls
 		if ((touch.px  >= 84 && touch.px  <= 159 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
 		{
 			appDrawerUnload();
 			home(); // Pressing the back icon - takes you back to the homescreen
 		}
 		
+		//Navbar controls
 		else if ((touch.px  >= 160 && touch.px  <= 235 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
 		{
 			appDrawerUnload();

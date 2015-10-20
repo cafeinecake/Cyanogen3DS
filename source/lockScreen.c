@@ -19,6 +19,8 @@ int lockScreen()
 	int hours = timeStruct->tm_hour;
 	int minutes = timeStruct->tm_min;
 	int day = timeStruct->tm_mday;
+	
+	sf2d_set_clear_color(RGBA8(0, 0, 0, 0));
 
 	while (1)
 	{

@@ -151,6 +151,6 @@ touchPosition touch;
 int cursorController();
 int batteryStatus(int x, int y);
 void appDrawerIcon();
-int navbarControls();
+int navbarControls(int type);
 int dayNightWidget();
 int home();

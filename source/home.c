@@ -4,6 +4,7 @@
 #include "lockScreen.h"
 #include "main.h"
 #include "powerMenu.h"
+#include "settingsMenu.h"
 
 extern const struct {
   unsigned int 	 width;
@@ -42,30 +43,55 @@ int batteryStatus(int x, int y)
 
 void appDrawerIcon() //Draws the app drawer icon. Draws a different icon of the same size once hovered with the cursor.
 {
-	if (touch.px  >= 170 && touch.px  <= 210 && touch.py >= 135 && touch.py <= 180)
-		sf2d_draw_texture(ic_allapps_pressed, 179, 148);
+	if (touch.px  >= 170 && touch.px  <= 210 && touch.py >= 145 && touch.py <= 190)
+		sf2d_draw_texture(ic_allapps_pressed, 179, 158);
 	
 	else
-		sf2d_draw_texture(ic_allapps, 179, 148);
+		sf2d_draw_texture(ic_allapps, 179, 158);
 }
 
-int navbarControls()
+int navbarControls(int type)
 {
-	if (touch.px  >= 84 && touch.px  <= 159 && touch.py >= 201 && touch.py <= 240)
-		sf2d_draw_texture(backicon, 70, 201);
-	else
-		sf2d_draw_texture(navbar, 70, 201);
+	if (type == 0)
+	{
+		if (touch.px  >= 84 && touch.px  <= 159 && touch.py >= 201 && touch.py <= 240)
+			sf2d_draw_texture(backicon, 70, 201);
+		else
+			sf2d_draw_texture(navbar, 70, 201);
 
-	if (touch.px  >= 160 && touch.px  <= 235 && touch.py >= 201 && touch.py <= 240)
-		sf2d_draw_texture(homeicon, 70, 201);
-	else
-		sf2d_draw_texture(navbar, 70, 201);
+		if (touch.px  >= 160 && touch.px  <= 235 && touch.py >= 201 && touch.py <= 240)
+			sf2d_draw_texture(homeicon, 70, 201);
+		else
+			sf2d_draw_texture(navbar, 70, 201);
 	
-	if (touch.px  >= 236 && touch.px  <= 311 && touch.py >= 201 && touch.py <= 240)
-		sf2d_draw_texture(multicon, 70, 201);
-	else
-		sf2d_draw_texture(navbar, 70, 201);
+		if (touch.px  >= 236 && touch.px  <= 311 && touch.py >= 201 && touch.py <= 240)
+			sf2d_draw_texture(multicon, 70, 201);
+		else
+			sf2d_draw_texture(navbar, 70, 201);
+	}
+	
+	else if (type == 1)
+	{
+		sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
 		
+		if (touch.px  >= 44 && touch.px  <= 119 && touch.py >= 201 && touch.py <= 240)
+			sf2d_draw_texture(backicon, 30, 201);
+		else
+			sf2d_draw_texture(navbar, 30, 201);
+
+		if (touch.px  >= 120 && touch.px  <= 195 && touch.py >= 201 && touch.py <= 240)
+			sf2d_draw_texture(homeicon, 30, 201);
+		else
+			sf2d_draw_texture(navbar, 30, 201);
+	
+		if (touch.px  >= 196 && touch.px  <= 271 && touch.py >= 201 && touch.py <= 240)
+			sf2d_draw_texture(multicon, 30, 201);
+		else
+			sf2d_draw_texture(navbar, 30, 201);
+			
+		sf2d_end_frame();
+	}
+	
 	return 0;
 }
 
@@ -119,15 +145,15 @@ int home()
 		
 		sf2d_draw_texture(background, 0, 0);
 		
-		sf2d_draw_texture(ic_launcher_browser, 49, 135);
-		sf2d_draw_texture(ic_launcher_messenger, 114, 135);
-		sf2d_draw_texture(ic_launcher_apollo, 241, 135);
-		sf2d_draw_texture(ic_launcher_settings, 306, 135);
+		sf2d_draw_texture(ic_launcher_browser, 49, 145);
+		sf2d_draw_texture(ic_launcher_messenger, 114, 145);
+		sf2d_draw_texture(ic_launcher_apollo, 241, 145);
+		sf2d_draw_texture(ic_launcher_settings, 306, 145);
 		appDrawerIcon();
 
 		dayNightWidget();
 		
-		navbarControls(); //Displays navbar
+		navbarControls(0); //Displays navbar
 		digitalTime(350, 2); //Displays digital time
 		batteryStatus(316, 2); //Displays battery status
 		cursorController();
@@ -138,6 +164,12 @@ int home()
 		{
 			sf2d_free_texture(ic_allapps_pressed);
 			appDrawer(); //Open app drawer
+		}
+		
+		if ((touch.px  >= 306 && touch.px  <= 351 && touch.py >= 145 && touch.py <= 190) && (kDown & KEY_A))
+		{
+			sf2d_free_texture(ic_allapps_pressed);
+			settingsMenu(); //Open settings menu
 		}
 		
 		if (kDown & KEY_Y)
