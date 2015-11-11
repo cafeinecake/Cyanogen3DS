@@ -2,6 +2,7 @@
 #include "clock.h"
 #include "homeMenu.h"
 #include "language.h"
+#include "lockScreen.h"
 #include "powerMenu.h"
 #include "settingsMenu.h"
 
@@ -113,6 +114,12 @@ int aboutMenu()
 		sf2d_end_frame();
 		
 		navbarControls(1);
+		
+		if (kDown & KEY_Y)
+			powerMenu(); 
+		
+		if (kDown & KEY_L)
+			lockScreen();
 		
 		if (kDown & KEY_B)
 		{
@@ -260,6 +267,12 @@ int settingsMenu()
 		sf2d_end_frame();
 		
 		navbarControls(1); 
+		
+		if (kDown & KEY_Y)
+			powerMenu(); 
+		
+		if (kDown & KEY_L)
+			lockScreen();
 		
 		if (kDown & KEY_B)
 		{

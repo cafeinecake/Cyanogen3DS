@@ -61,6 +61,12 @@ int appDrawer()
 		
 		sf2d_end_frame();
 		
+		if (kDown & KEY_Y)
+			powerMenu(); 
+		
+		if (kDown & KEY_L)
+			lockScreen();
+		
 		if ((touch.px  >= 170 && touch.px  <= 215 && touch.py >= 115 && touch.py <= 160) && (kDown & KEY_TOUCH))
 		{
 			appDrawerUnload();
@@ -86,12 +92,6 @@ int appDrawer()
 			appDrawerUnload();
 			home(); //Returns to home screen
 		}
-		
-		if (kDown & KEY_Y)
-			powerMenu();
-		
-		if (kDown & KEY_L)
-			lockScreen();
 		
 		sf2d_swapbuffers();	
 	}
