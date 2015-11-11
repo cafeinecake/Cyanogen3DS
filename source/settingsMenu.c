@@ -1,6 +1,7 @@
 #include "appDrawer.h"
 #include "clock.h"
 #include "homeMenu.h"
+#include "language.h"
 #include "powerMenu.h"
 #include "settingsMenu.h"
 
@@ -84,12 +85,11 @@ int aboutMenu()
 		
 		sf2d_draw_texture(aboutBg, 0, 0);
 		
-		sftd_draw_textf(roboto, 20, 68, RGBA8(0, 0, 0, 255), 12, "Cyanogen3DS Updates");
-		sftd_draw_textf(roboto, 20, 83, RGBA8(0, 0, 0, 255), 12, "Click for, view or isntall available updates");
-		sftd_draw_textf(roboto, 20, 116, RGBA8(0, 0, 0, 255), 12, "Cyanogen3DS version: 0.01-20151019-UNOFFICIAL");
-		sftd_draw_textf(roboto, 20, 132, RGBA8(0, 0, 0, 255), 12, "Model = NULL");
-		//sftd_draw_textf(roboto, 20, 148, RGBA8(0, 0, 0, 255), 12, "Performance");
-		sftd_draw_textf(roboto, 20, 168, RGBA8(0, 0, 0, 255), 12, "Kernel version: NULL");
+		sftd_draw_textf(roboto, 20, 68, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsAbout[language][0]);
+		sftd_draw_textf(roboto, 20, 83, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsAbout[language][1]);
+		sftd_draw_textf(roboto, 20, 116, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsAbout[language][2]);
+		//sftd_draw_textf(roboto, 20, 132, RGBA8(0, 0, 0, 255), 12, "Model = NULL");
+		sftd_draw_textf(roboto, 20, 168, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsAbout[language][5]);
 		//sftd_draw_textf(roboto, 20, 183, RGBA8(0, 0, 0, 255), 12, "NinjaHax version: NULL");
 		
 		if (touch.px  >= 0 && touch.px  <= 480 && touch.py >= 58 && touch.py <= 105)
@@ -151,7 +151,7 @@ int settingsHighlight()
 	if (touch.px  >= 0 && touch.px  <= 198 && touch.py >= 75 && touch.py <= 133)
 	{
 		sf2d_draw_texture(wifi_highlight, 0, 87);
-		sftd_draw_textf(roboto, 48, 106, RGBA8(0, 0, 0, 255), 12, "Wi-Fi");
+		sftd_draw_textf(roboto, 48, 106, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][0]);
 		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
@@ -160,7 +160,7 @@ int settingsHighlight()
 	else if (touch.px  >= 0 && touch.px  <= 198 && touch.py >= 134 && touch.py <= 174)
 	{
 		sf2d_draw_texture(display_highlight, 0, 135);
-		sftd_draw_textf(roboto, 48, 153, RGBA8(0, 0, 0, 255), 12, "Display");
+		sftd_draw_textf(roboto, 48, 153, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][1]);
 		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
@@ -169,7 +169,7 @@ int settingsHighlight()
 	else if (touch.px  >= 0 && touch.px  <= 198 && touch.py >= 175 && touch.py <= 240)
 	{
 		sf2d_draw_texture(developeroptions_highlight, 0, 183);
-		sftd_draw_textf(roboto, 48, 202, RGBA8(0, 0, 0, 255), 12, "Developer Options");
+		sftd_draw_textf(roboto, 48, 202, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][2]);
 		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
@@ -178,7 +178,7 @@ int settingsHighlight()
 	else if (touch.px  >= 203 && touch.px  <= 400 && touch.py >= 75 && touch.py <= 133)
 	{
 		sf2d_draw_texture(security_highlight, 199, 87);
-		sftd_draw_textf(roboto, 250, 106, RGBA8(0, 0, 0, 255), 12, "Security");
+		sftd_draw_textf(roboto, 250, 106, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][3]);
 		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
@@ -187,7 +187,7 @@ int settingsHighlight()
 	else if (touch.px  >= 203 && touch.px  <= 400 && touch.py >= 134 && touch.py <= 174)
 	{
 		sf2d_draw_texture(performance_highlight, 203, 135);
-		sftd_draw_textf(roboto, 250, 153, RGBA8(0, 0, 0, 255), 12, "Performance");
+		sftd_draw_textf(roboto, 250, 153, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][4]);
 		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
@@ -196,7 +196,7 @@ int settingsHighlight()
 	else if (touch.px  >= 203 && touch.px  <= 400 && touch.py >= 175 && touch.py <= 240)
 	{
 		sf2d_draw_texture(about_highlight, 203, 183);
-		sftd_draw_textf(roboto, 250, 202, RGBA8(0, 0, 0, 255), 12, "About");
+		sftd_draw_textf(roboto, 250, 202, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][5]);
 		if (kDown & KEY_TOUCH)
 		{
 			settingsUnload();
@@ -243,12 +243,12 @@ int settingsMenu()
 		
 		sf2d_draw_texture(settingsBg, 0, 0);
 		
-		sftd_draw_textf(roboto, 48, 106, RGBA8(0, 0, 0, 255), 12, "Wi-Fi");
-		sftd_draw_textf(roboto, 48, 153, RGBA8(0, 0, 0, 255), 12, "Display");
-		sftd_draw_textf(roboto, 48, 202, RGBA8(0, 0, 0, 255), 12, "Developer Options");
-		sftd_draw_textf(roboto, 250, 106, RGBA8(0, 0, 0, 255), 12, "Security");
-		sftd_draw_textf(roboto, 250, 153, RGBA8(0, 0, 0, 255), 12, "Performance");
-		sftd_draw_textf(roboto, 250, 202, RGBA8(0, 0, 0, 255), 12, "About");
+		sftd_draw_textf(roboto, 48, 106, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][0]);
+		sftd_draw_textf(roboto, 48, 153, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][1]);
+		sftd_draw_textf(roboto, 48, 202, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][2]);
+		sftd_draw_textf(roboto, 250, 106, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][3]);
+		sftd_draw_textf(roboto, 250, 153, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][4]);
+		sftd_draw_textf(roboto, 250, 202, RGBA8(0, 0, 0, 255), 12, "%s", lang_settingsMain[language][5]);
 		
 		settingsHighlight();
 		

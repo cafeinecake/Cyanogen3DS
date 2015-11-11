@@ -1,6 +1,7 @@
 #include "appDrawer.h"
 #include "clock.h"
 #include "homeMenu.h"
+#include "language.h"
 #include "lockScreen.h"
 #include "main.h"
 #include "powerMenu.h"
@@ -114,16 +115,16 @@ void androidQuickSettings()
 	
 	batteryStatus(350, yPos2-4);
 	
-	sftd_draw_textf(roboto, 115, yLine1, RGBA8(255, 255, 255, 255), 10, "Wi-Fi");
-	sftd_draw_textf(roboto, 245, yLine1, RGBA8(255, 255, 255, 255), 10, "Balanced");
-	sftd_draw_textf(roboto, 170, yLine2, RGBA8(255, 255, 255, 255), 10, "Lockscreen");
+	sftd_draw_textf(roboto, 115, yLine1, RGBA8(255, 255, 255, 255), 10, "%s", lang_quickSettings[language][0]);
+	sftd_draw_textf(roboto, 245, yLine1, RGBA8(255, 255, 255, 255), 10, "%s", lang_quickSettings[language][2]);
+	sftd_draw_textf(roboto, 170, yLine2, RGBA8(255, 255, 255, 255), 10, "%s", lang_quickSettings[language][4]);
 	
 	digitalTime(25, yPos1);
 	getMonthOfYear(25, yPos1+14, 10);
 
 	notif_enabled = 0;
 	
-	if ((kHeld & KEY_TOUCH) && (touch.px >= 0 && touch.px <= 400 && touch.py >= 0 && touch.py <= 1)) 
+	if ((kHeld & KEY_TOUCH) && (touch.px >= 0 && touch.px <= 400 && touch.py >= 0 && touch.py <= 20)) 
 	{
 		notif_down = 1;
 	}

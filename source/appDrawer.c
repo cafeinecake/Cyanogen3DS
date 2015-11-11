@@ -1,6 +1,7 @@
 #include "appDrawer.h"
 #include "clock.h"
 #include "homeMenu.h"
+#include "language.h"
 #include "lockScreen.h"
 #include "powerMenu.h"
 #include "settingsMenu.h"
@@ -36,21 +37,21 @@ int appDrawer()
 		sf2d_draw_texture(backdrop, 0, 14);
 
 		sf2d_draw_texture(ic_launcher_browser, 20, 35);
-		sftd_draw_textf(roboto, 18, 90, RGBA8(0, 0, 0, 255), 12, "Browser");
+		sftd_draw_textf(roboto, 18, 90, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][0]);
 		sf2d_draw_texture(ic_launcher_clock, 95, 35);
-		sftd_draw_textf(roboto, 98, 90, RGBA8(0, 0, 0, 255), 12, "Clock");
+		sftd_draw_textf(roboto, 98, 90, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][1]);
 		sf2d_draw_texture(ic_launcher_filemanager, 170, 35);
-		sftd_draw_textf(roboto, 167, 90, RGBA8(0, 0, 0, 255), 12, "Manager");
+		sftd_draw_textf(roboto, 167, 90, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][2]);
 		sf2d_draw_texture(ic_launcher_gallery, 245, 35);
-		sftd_draw_textf(roboto, 247, 90, RGBA8(0, 0, 0, 255), 12, "Gallery");
+		sftd_draw_textf(roboto, 247, 90, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][3]);
 		sf2d_draw_texture(ic_launcher_game, 320, 35);
-		sftd_draw_textf(roboto, 325, 90, RGBA8(0, 0, 0, 255), 12, "Game");
+		sftd_draw_textf(roboto, 325, 90, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][4]);
 		sf2d_draw_texture(ic_launcher_messenger, 20, 115);
-		sftd_draw_textf(roboto, 16, 170, RGBA8(0, 0, 0, 255), 12, "Messages");
+		sftd_draw_textf(roboto, 16, 170, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][5]);
 		sf2d_draw_texture(ic_launcher_apollo, 95, 115);
-		sftd_draw_textf(roboto, 98, 170, RGBA8(0, 0, 0, 255), 12, "Music");
+		sftd_draw_textf(roboto, 98, 170, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][6]);
 		sf2d_draw_texture(ic_launcher_settings, 170, 115);
-		sftd_draw_textf(roboto, 167, 170, RGBA8(0, 0, 0, 255), 12, "Settings");
+		sftd_draw_textf(roboto, 167, 170, RGBA8(0, 0, 0, 255), 12, "%s", lang_appDrawer[language][7]);
 		
 		navbarControls(0);
 		digitalTime(350, 2); 

@@ -11,6 +11,8 @@ sf2d_texture *performance_highlight;
 sf2d_texture *security_highlight;
 sf2d_texture *wifi_highlight;
 
+int language;
+
 int aboutMenu();
 int settingsHighlight();
 int settingsUnload();
