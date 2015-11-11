@@ -1,6 +1,6 @@
 #include "appDrawer.h"
 #include "clock.h"
-#include "home.h"
+#include "homeMenu.h"
 #include "powerMenu.h"
 #include "settingsMenu.h"
 
@@ -107,6 +107,7 @@ int aboutMenu()
 		 
 		digitalTime(350, 2); 
 		batteryStatus(316, 2); 
+		androidQuickSettings();
 		cursorController();
 		
 		sf2d_end_frame();
@@ -118,6 +119,20 @@ int aboutMenu()
 			sf2d_free_texture(aboutBg);
 			sf2d_free_texture(highlight);
 			settingsMenu();
+		}
+		
+		if ((touch.px  >= 44 && touch.px  <= 119 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
+		{
+			sf2d_free_texture(aboutBg);
+			sf2d_free_texture(highlight);
+			settingsMenu();
+		}
+		
+		else if ((touch.px  >= 120 && touch.px  <= 195 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
+		{
+			sf2d_free_texture(aboutBg);
+			sf2d_free_texture(highlight);
+			home();
 		}
 		
 		sf2d_swapbuffers();
@@ -137,52 +152,52 @@ int settingsHighlight()
 	{
 		sf2d_draw_texture(wifi_highlight, 0, 87);
 		sftd_draw_textf(roboto, 48, 106, RGBA8(0, 0, 0, 255), 12, "Wi-Fi");
-		if (kDown & KEY_A)
+		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
-		}
+		}*/
 	}
 	else if (touch.px  >= 0 && touch.px  <= 198 && touch.py >= 134 && touch.py <= 174)
 	{
 		sf2d_draw_texture(display_highlight, 0, 135);
 		sftd_draw_textf(roboto, 48, 153, RGBA8(0, 0, 0, 255), 12, "Display");
-		if (kDown & KEY_A)
+		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
-		}
+		}*/
 	}
 	else if (touch.px  >= 0 && touch.px  <= 198 && touch.py >= 175 && touch.py <= 240)
 	{
 		sf2d_draw_texture(developeroptions_highlight, 0, 183);
 		sftd_draw_textf(roboto, 48, 202, RGBA8(0, 0, 0, 255), 12, "Developer Options");
-		if (kDown & KEY_A)
+		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
-		}
+		}*/
 	}
 	else if (touch.px  >= 203 && touch.px  <= 400 && touch.py >= 75 && touch.py <= 133)
 	{
 		sf2d_draw_texture(security_highlight, 199, 87);
 		sftd_draw_textf(roboto, 250, 106, RGBA8(0, 0, 0, 255), 12, "Security");
-		if (kDown & KEY_A)
+		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
-		}
+		}*/
 	}
 	else if (touch.px  >= 203 && touch.px  <= 400 && touch.py >= 134 && touch.py <= 174)
 	{
 		sf2d_draw_texture(performance_highlight, 203, 135);
 		sftd_draw_textf(roboto, 250, 153, RGBA8(0, 0, 0, 255), 12, "Performance");
-		if (kDown & KEY_A)
+		/*if (kDown & KEY_A)
 		{
 			settingsUnload();
-		}
+		}*/
 	}
 	else if (touch.px  >= 203 && touch.px  <= 400 && touch.py >= 175 && touch.py <= 240)
 	{
 		sf2d_draw_texture(about_highlight, 203, 183);
 		sftd_draw_textf(roboto, 250, 202, RGBA8(0, 0, 0, 255), 12, "About");
-		if (kDown & KEY_A)
+		if (kDown & KEY_TOUCH)
 		{
 			settingsUnload();
 			aboutMenu();
@@ -239,6 +254,7 @@ int settingsMenu()
 		
 		digitalTime(350, 2); 
 		batteryStatus(316, 2); 
+		androidQuickSettings();
 		cursorController();
 		
 		sf2d_end_frame();
@@ -249,6 +265,18 @@ int settingsMenu()
 		{
 			settingsUnload();
 			appDrawer();
+		}
+		
+		if ((touch.px  >= 44 && touch.px  <= 119 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
+		{
+			settingsUnload();
+			appDrawer();
+		}
+		
+		else if ((touch.px  >= 120 && touch.px  <= 195 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
+		{
+			settingsUnload();
+			home();
 		}
 		
 		sf2d_swapbuffers();

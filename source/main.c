@@ -1,5 +1,5 @@
 #include "main.h"
-#include "home.h"
+#include "homeMenu.h"
 
 int main(int argc, char **argv)
 {
@@ -12,9 +12,8 @@ int main(int argc, char **argv)
 
 	//Loading images
 	background = sf2d_create_texture_mem_RGBA8(background_img.pixel_data, background_img.width, background_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-	backdrop = sf2d_create_texture_mem_RGBA8(backdrop_img.pixel_data, backdrop_img.width, backdrop_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	cursor = sf2d_create_texture_mem_RGBA8(cursor_img.pixel_data, cursor_img.width, cursor_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-	ic_allapps = sf2d_create_texture_mem_RGBA8(ic_allapps_img.pixel_data, ic_allapps_img.width, ic_allapps_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+	quickSettings = sf2d_create_texture_mem_RGBA8(quickSettings_img.pixel_data, quickSettings_img.width, quickSettings_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	
 	navbar = sf2d_create_texture_mem_RGBA8(navbar_img.pixel_data, navbar_img.width, navbar_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	backicon = sf2d_create_texture_mem_RGBA8(backicon_img.pixel_data, backicon_img.width, backicon_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);

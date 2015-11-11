@@ -1,10 +1,19 @@
 #include <3ds.h>
 #include <sf2d.h>
 
+sf2d_texture *backdrop;
+
 sf2d_texture *ic_launcher_clock;
 sf2d_texture *ic_launcher_filemanager;
 sf2d_texture *ic_launcher_gallery;
 sf2d_texture *ic_launcher_game;
+
+extern const struct {
+  unsigned int 	 width;
+  unsigned int 	 height;
+  unsigned int 	 bytes_per_pixel;
+  unsigned char	 pixel_data[];
+} backdrop_img;
 
 extern const struct {
   unsigned int 	 width;

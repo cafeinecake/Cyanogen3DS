@@ -1,5 +1,5 @@
 #include "clock.h"
-#include "home.h"
+#include "homeMenu.h"
 #include "lockScreen.h"
 
 extern const struct {

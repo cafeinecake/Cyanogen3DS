@@ -1,12 +1,13 @@
 #include "appDrawer.h"
 #include "clock.h"
-#include "home.h"
+#include "homeMenu.h"
 #include "lockScreen.h"
 #include "powerMenu.h"
 #include "settingsMenu.h"
 
 void appDrawerUnload()
 {
+	sf2d_free_texture(backdrop);
 	sf2d_free_texture(ic_launcher_clock);
 	sf2d_free_texture(ic_launcher_filemanager);
 	sf2d_free_texture(ic_launcher_gallery);
@@ -15,6 +16,7 @@ void appDrawerUnload()
 
 int appDrawer()
 {	
+	backdrop = sf2d_create_texture_mem_RGBA8(backdrop_img.pixel_data, backdrop_img.width, backdrop_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	ic_launcher_clock = sf2d_create_texture_mem_RGBA8(ic_launcher_clock_img.pixel_data, ic_launcher_clock_img.width, ic_launcher_clock_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	ic_launcher_filemanager = sf2d_create_texture_mem_RGBA8(ic_launcher_filemanager_img.pixel_data, ic_launcher_filemanager_img.width, ic_launcher_filemanager_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 	ic_launcher_gallery = sf2d_create_texture_mem_RGBA8(ic_launcher_gallery_img.pixel_data, ic_launcher_gallery_img.width, ic_launcher_gallery_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
@@ -52,26 +54,27 @@ int appDrawer()
 		
 		navbarControls(0);
 		digitalTime(350, 2); 
-		batteryStatus(316, 2); 
+		batteryStatus(316, 2);
+		androidQuickSettings();		
 		cursorController();
 		
 		sf2d_end_frame();
 		
-		if ((touch.px  >= 170 && touch.px  <= 215 && touch.py >= 115 && touch.py <= 160) && (kDown & KEY_A))
+		if ((touch.px  >= 170 && touch.px  <= 215 && touch.py >= 115 && touch.py <= 160) && (kDown & KEY_TOUCH))
 		{
 			appDrawerUnload();
 			settingsMenu();
 		}
 		
 		//Navbar controls
-		if ((touch.px  >= 84 && touch.px  <= 159 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
+		if ((touch.px  >= 84 && touch.px  <= 159 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_TOUCH))
 		{
 			appDrawerUnload();
 			home(); // Pressing the back icon - takes you back to the homescreen
 		}
 		
 		//Navbar controls
-		else if ((touch.px  >= 160 && touch.px  <= 235 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_A))
+		else if ((touch.px  >= 160 && touch.px  <= 235 && touch.py >= 201 && touch.py <= 240) && (kDown & KEY_TOUCH))
 		{
 			appDrawerUnload();
 			home(); // Pressing the home icon always returns to the home screen
